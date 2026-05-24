@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Account Records</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <h1>Account Records</h1>
+    <p class="muted">Click a column header to sort. Use the controls to paginate.</p>
+  </header>
+
+  <main>
+    <div class="controls">
+      <label>
+        Page size:
+        <select id="limit-select" data-testid="limit-select">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </label>
+      <span class="spacer"></span>
+      <button id="prev-btn" data-testid="prev-btn">&laquo; Prev</button>
+      <span id="page-info" data-testid="page-info">Page 1 of 1</span>
+      <button id="next-btn" data-testid="next-btn">Next &raquo;</button>
+    </div>
+
+    <table id="records-table" data-testid="records-table">
+      <thead>
+        <tr id="header-row">
+          <!-- headers populated by JS so data-sort attributes match column keys -->
+        </tr>
+      </thead>
+      <tbody id="records-tbody" data-testid="records-tbody">
+        <!-- rows populated by JS -->
+      </tbody>
+    </table>
+
+    <div id="status" data-testid="status" class="muted"></div>
+  </main>
+
+  <script src="/script.js"></script>
+</body>
+</html>

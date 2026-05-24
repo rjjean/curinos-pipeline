@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+reports/*
+!reports/.gitkeep
+.env
+*.log
+node_modules/
