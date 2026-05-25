@@ -1,0 +1,53 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RecordsResponse",
+  "type": "object",
+  "required": ["data", "pagination", "meta"],
+  "additionalProperties": false,
+  "properties": {
+    "data": {
+      "type": "array",
+      "items": { "$ref": "#/definitions/Record" }
+    },
+    "pagination": {
+      "type": "object",
+      "required": ["page", "limit", "total", "total_pages"],
+      "additionalProperties": false,
+      "properties": {
+        "page":        { "type": "integer", "minimum": 1 },
+        "limit":       { "type": "integer", "minimum": 1, "maximum": 100 },
+        "total":       { "type": "integer", "minimum": 0 },
+        "total_pages": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "required": ["sort"],
+      "additionalProperties": false,
+      "properties": {
+        "sort": { "type": ["string", "null"] }
+      }
+    }
+  },
+  "definitions": {
+    "Record": {
+      "type": "object",
+      "required": [
+        "id", "account_id", "tier", "region", "product_line",
+        "balance", "transaction_count", "last_activity_date", "is_active"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id":                  { "type": "integer", "minimum": 1 },
+        "account_id":          { "type": "string", "pattern": "^ACC-\\d{5}$" },
+        "tier":                { "type": "string", "enum": ["Platinum", "Gold", "Silver", "Bronze"] },
+        "region":              { "type": "string" },
+        "product_line":        { "type": "string" },
+        "balance":             { "type": "number", "minimum": 0 },
+        "transaction_count":   { "type": "integer", "minimum": 0 },
+        "last_activity_date":  { "type": "string", "format": "date" },
+        "is_active":           { "type": "boolean" }
+      }
+    }
+  }
+}
