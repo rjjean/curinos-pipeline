@@ -96,9 +96,10 @@ def test_sort_is_correct_and_stable(fetch_all_records, field, direction):
 
 @pytest.mark.parametrize("bad_sort", ["balance", "balance:sideways", "unknown:asc"])
 def test_invalid_sort_returns_400(http, bad_sort):
-    """Malformed sort specs are rejected. Empty string is NOT in this list —
-    an empty query parameter is treated by the server as 'no sort specified',
-    which is valid. (See AI Manifest, Failure 3.)"""
+    """
+    Malformed sort specs are rejected. Empty string is NOT in this list,
+    an empty query parameter is treated by the server as 'no sort specified'.
+    """
     resp = http.get("/api/records", params={"sort": bad_sort})
     assert resp.status_code in (400, 422), f"Expected 4xx for sort={bad_sort!r}"
 
