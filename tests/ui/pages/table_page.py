@@ -120,5 +120,5 @@ def _cast(field: str, text: str) -> Any:
     if field == "balance":
         return float(text)
     if field == "is_active":
-        return text == "True"
+        return text == "true"
     return text
