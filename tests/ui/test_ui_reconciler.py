@@ -13,12 +13,9 @@ UI rendering and backend truth is a real bug in either the API, the UI,
 or the rendering code, all of which this suite is meant to catch.
 """
 from __future__ import annotations
-
-import pytest
 from playwright.sync_api import sync_playwright
-
 from tests.ui.pages.table_page import TablePage
-
+import pytest
 
 @pytest.fixture(scope="module")
 def browser_page():
